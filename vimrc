@@ -17,6 +17,7 @@ Bundle 'haskell.vim'
 Bundle 'Shougo/vimproc'
 Bundle 'eagletmt/ghcmod-vim'
 Bundle 'ujihisa/neco-ghc'
+Bundle 'pbrisbin/html-template-syntax'
 
 filetype plugin indent on
 syntax on

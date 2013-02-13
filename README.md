@@ -3,9 +3,10 @@ Install
 
 ```
 $ git clone http git://github.com/cwvh/vimrc.git ~/.vim
-$ cd ~/.vim && git submodule init
+$ cd ~/.vim
+$ git submodule init && git submodule update
 $ ln -s ~/.vim/vimrc ~/.vimrc
-$ vim -c "BundleInstall"
+$ vim +BundleInstall +qall
 $ cd ~/.vim/bundle/vimproc && make -f make_<platform>.mak
 ```
 

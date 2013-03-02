@@ -7,7 +7,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'kien/rainbow_parentheses.vim.git'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'juvenn/mustache.vim'
 Bundle 'Command-T'
@@ -29,7 +28,6 @@ set incsearch
 set ruler
 set smartindent smarttab
 set nobackup noswapfile
-set laststatus=2
 
 set t_Co=256
 set bg=light
@@ -37,8 +35,6 @@ colorscheme default
 
 au BufNewFile,BufRead * setlocal formatoptions-=cro
 au VimEnter * RainbowParenthesesToggle
-let g:Powerline_symbols = 'fancy'
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
 " Correct some spelling mistakes
 ia teh the

@@ -2,7 +2,7 @@ Install
 =======
 
 ```
-$ git clone http git://github.com/cwvh/vimrc.git ~/.vim
+$ git clone http://github.com/cwvh/vimrc.git ~/.vim
 $ cd ~/.vim
 $ git submodule init && git submodule update
 $ ln -s ~/.vim/vimrc ~/.vimrc

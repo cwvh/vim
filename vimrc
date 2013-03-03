@@ -35,6 +35,7 @@ set t_Co=256
 set bg=light
 colorscheme default
 
+au BufNewFile,BufRead * setlocal formatoptions-=cro
 au VimEnter * RainbowParenthesesToggle
 let g:Powerline_symbols = 'fancy'
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
@@ -55,6 +56,8 @@ ia wheil while
 ia whiel while
 ia incldue include
 
+no j gj
+no k gk
 no <c-j> 6j
 no <c-k> 6k
 no <c-a> ^

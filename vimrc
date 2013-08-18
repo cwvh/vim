@@ -1,80 +1,66 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/unite.vim'
 Bundle 'bling/vim-airline'
-
-Bundle 'kien/rainbow_parentheses.vim.git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'juvenn/mustache.vim'
 Bundle 'Solarized'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'haskell.vim'
-Bundle 'eagletmt/ghcmod-vim'
-Bundle 'ujihisa/neco-ghc'
-Bundle 'pbrisbin/html-template-syntax'
-Bundle 'adimit/prolog.vim'
+Bundle 'ctrlp.vim'
+Bundle 'opencl.vim'
 
 filetype plugin indent on
 syntax on
 
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_enable_fugitive=0
-let g:airline_enable_syntastic=0
-let g:airline_section_b="%f"
-let g:airline_section_c=''
-let g:airline_section_x=''
-let g:airline_section_y="%Y"
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-noremap <leader>f :<C-u>Unite -start-insert file_rec/async:!<CR>
-noremap <leader>m :<C-u>Unite file_mru<CR>
-"noremap <space>/ :Unite grep:.<cr>
-"noremap <space>s :Unite -quick-match buffer<cr>
-
 set shm=atI
 set enc=utf-8
-set ts=4 sw=4 sts=4 et
+set ts=4 sw=4 et
 set incsearch
 set ruler
 set smartindent smarttab
 set nobackup noswapfile
 set laststatus=2
 
-set t_Co=256
-set bg=light
-colorscheme default
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_enable_branch=0
+let g:airline_enable_syntastic=0
+let g:airline_section_b="%f"
+let g:airline_section_c=''
+let g:airline_section_x=''
+let g:airline_section_y="%Y"
 
-au BufNewFile,BufRead * setlocal formatoptions-=cro
-au VimEnter * RainbowParenthesesToggle
-
-au BufNewFile,BufRead *.pl :set ft=prolog
-
-" Correct some spelling mistakes
-ia teh the
-ia htis this
-ia tihs this
-ia funciton function
-ia funtion function
-ia fucntion function
-ia functino function
-ia retunr return
-ia reutrn return
-ia forach foreach
-ia foreahc foreach
-ia wheil while
-ia whiel while
-ia incldue include
-
+let mapleader = " "
 no j gj
 no k gk
 no <c-j> 6j
 no <c-k> 6k
 no <c-a> ^
 no <c-e> $
+no <leader>h <c-w>h
+no <leader>j <c-w>j
+no <leader>k <c-w>k
+no <leader>l <c-w>l
+no <c-p> :CtrlP<CR>
+
+if has("gui_running")
+  set go-=T
+  set go-=r
+  set nu
+  set noeb vb t_vb=
+  set showtabline=1
+  set lines=35
+  set columns=85
+  set guifont=Consolas:h11
+  set bg=light
+  colorscheme solarized
+endif
+
+au BufNewFile,BufRead * setlocal formatoptions-=cro
+au BufNewFile,BufRead *.cl setlocal ft=opencl
+au FileType c setlocal ts=8 sw=8 noet fo+=tcqlron com-=:// com+=f:// cino=:0,l1,t0,g0
+au FileType cpp setlocal ts=4 sw=4 et matchpairs+=<:>
+au FileType lua setlocal ts=2 sw=2 et
+au FileType ruby setlocal sw=2 ts=2
+au FileType vim setlocal sw=2 ts=2

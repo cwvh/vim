@@ -21,6 +21,7 @@ set ruler
 set smartindent smarttab
 set nobackup noswapfile
 set laststatus=2
+set backspace=indent,eol,start
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -44,17 +45,27 @@ no <leader>k <c-w>k
 no <leader>l <c-w>l
 no <c-p> :CtrlP<CR>
 
+set bg=light
 if has("gui_running")
   set go-=T
   set go-=r
   set nu
   set noeb vb t_vb=
   set showtabline=1
-  set lines=35
+  set lines=45
   set columns=85
-  set guifont=Consolas:h11
-  set bg=light
+  if has("win32")
+    set guifont=Consolas:h11
+  elseif has("macunix")
+    set guifont=Menlo:h12
+  endif
   colorscheme solarized
+endif
+
+if has("win32")
+  au BufWritePost _vimrc source ~/_vimrc
+else
+  au BufWritePost .vimrc source ~/.vimrc
 endif
 
 au BufNewFile,BufRead * setlocal formatoptions-=cro

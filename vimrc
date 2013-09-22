@@ -9,6 +9,7 @@ Bundle 'bling/vim-airline'
 Bundle 'Solarized'
 Bundle 'ctrlp.vim'
 Bundle 'opencl.vim'
+Bundle 'jnwhiteh/vim-golang'
 
 filetype plugin indent on
 syntax on
@@ -70,8 +71,10 @@ endif
 
 au BufNewFile,BufRead * setlocal formatoptions-=cro
 au BufNewFile,BufRead *.cl setlocal ft=opencl
+au BufNewFile,BufRead *.md setlocal ft=markdown
 au FileType c setlocal ts=8 sw=8 noet fo+=tcqlron com-=:// com+=f:// cino=:0,l1,t0,g0
 au FileType cpp setlocal ts=4 sw=4 et matchpairs+=<:>
 au FileType lua setlocal ts=2 sw=2 et
 au FileType ruby setlocal sw=2 ts=2
 au FileType vim setlocal sw=2 ts=2
+au FileType haskell setlocal sw=2 ts=2

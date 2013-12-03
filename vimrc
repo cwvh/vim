@@ -62,6 +62,9 @@ if has("gui_running")
     set guifont=Menlo:h12
   endif
   colorscheme solarized
+else
+  colorscheme default
+  set t_Co=256
 endif
 
 if has("win32")

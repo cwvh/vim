@@ -24,6 +24,7 @@ set smartindent smarttab
 set nobackup noswapfile
 set laststatus=2
 set backspace=indent,eol,start
+set mouse=a
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''

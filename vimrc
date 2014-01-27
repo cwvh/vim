@@ -2,6 +2,7 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle
+set rtp+=/usr/local/go/misc/vim
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -9,7 +10,6 @@ Bundle 'bling/vim-airline'
 Bundle 'Solarized'
 Bundle 'ctrlp.vim'
 Bundle 'opencl.vim'
-Bundle 'jnwhiteh/vim-golang'
 Bundle 'Align'
 
 filetype plugin indent on
@@ -52,7 +52,7 @@ set bg=light
 if has("gui_running")
   set go-=T
   set go-=r
-  set nu
+  set go-=L
   set noeb vb t_vb=
   set showtabline=1
   set lines=45
@@ -60,7 +60,7 @@ if has("gui_running")
   if has("win32")
     set guifont=Consolas:h11
   elseif has("macunix")
-    set guifont=Menlo:h12
+    set guifont=Anonymous\ Pro:h13
   endif
   colorscheme solarized
 else
@@ -83,3 +83,4 @@ au FileType lua setlocal ts=2 sw=2 et
 au FileType ruby setlocal sw=2 ts=2
 au FileType vim setlocal sw=2 ts=2
 au FileType haskell setlocal sw=2 ts=2
+au FileType go autocmd BufWritePre <buffer> Fmt

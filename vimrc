@@ -8,7 +8,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'Solarized'
-Bundle 'ctrlp.vim'
 Bundle 'opencl.vim'
 Bundle 'Align'
 
@@ -46,7 +45,6 @@ no <leader>h <c-w>h
 no <leader>j <c-w>j
 no <leader>k <c-w>k
 no <leader>l <c-w>l
-no <c-p> :CtrlP<CR>
 
 set bg=light
 if has("gui_running")

@@ -80,5 +80,6 @@ au FileType cpp setlocal ts=4 sw=4 et matchpairs+=<:>
 au FileType lua setlocal ts=2 sw=2 et
 au FileType ruby setlocal sw=2 ts=2
 au FileType vim setlocal sw=2 ts=2
-au FileType haskell setlocal sw=2 ts=2
+au FileType haskell,cabal setlocal sw=2 ts=2
 au FileType go autocmd BufWritePre <buffer> Fmt
+au FileType html,xml setlocal ts=2 sw=2 ts=2 et

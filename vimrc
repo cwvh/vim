@@ -2,13 +2,13 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle
-set rtp+=/usr/local/go/misc/vim
+set rtp+=/usr/local/Cellar/go/1.2.2/libexec/misc/vim
+"set rtp+=/usr/local/go/misc/vim
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'Solarized'
-Bundle 'opencl.vim'
 Bundle 'Align'
 
 filetype plugin indent on
@@ -76,10 +76,12 @@ au BufNewFile,BufRead * setlocal formatoptions-=cro
 au BufNewFile,BufRead *.cl setlocal ft=opencl
 au BufNewFile,BufRead *.md setlocal ft=markdown
 au FileType c setlocal ts=4 sw=4 et fo+=tcqlron com-=:// com+=f:// cino=:0,l1,t0,g0
-au FileType cpp setlocal ts=4 sw=4 et matchpairs+=<:>
+au FileType cpp setlocal ts=2 sw=2 et matchpairs+=<:> cinoptions=g1
 au FileType lua setlocal ts=2 sw=2 et
 au FileType ruby setlocal sw=2 ts=2
 au FileType vim setlocal sw=2 ts=2
 au FileType haskell,cabal setlocal sw=2 ts=2
-au FileType go autocmd BufWritePre <buffer> Fmt
+"au FileType go autocmd BufWritePre <buffer> Fmt
+au FileType go setlocal ts=4 sw=4 noet
 au FileType html,xml setlocal ts=2 sw=2 ts=2 et
+au FileType python setlocal nosmartindent

@@ -1,28 +1,11 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
-set rtp+=/usr/local/Cellar/go/1.2.2/libexec/misc/vim
-"set rtp+=/usr/local/go/misc/vim
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'bling/vim-airline'
-Bundle 'Solarized'
-Bundle 'Align'
-
-filetype plugin indent on
-syntax on
+execute pathogen#infect()
 
 set shm=atI
-set enc=utf-8
 set ts=4 sw=4 et
-set incsearch
-set ruler
-set smartindent smarttab
 set nobackup noswapfile
-set laststatus=2
-set backspace=indent,eol,start
 set mouse=a
 
 let g:airline_left_sep=''
@@ -63,11 +46,10 @@ if has("gui_running")
   colorscheme solarized
 else
   colorscheme default
-  set t_Co=256
 endif
 
 if has("win32")
-  au BufWritePost _vimrc source ~/_vimrc
+  au BufWritePost _vimrc source ~/vimfiles/vimrc
 else
   au BufWritePost .vimrc source ~/.vimrc
 endif

@@ -1,0 +1,12 @@
+[submodule "bundle/vim-sensible"]
+	path = bundle/vim-sensible
+	url = http://github.com/tpope/vim-sensible
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = http://github.com/altercation/vim-colors-solarized
+[submodule "bundle/Align"]
+	path = bundle/Align
+	url = http://github.com/vim-scripts/Align
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = http://github.com/vim-airline/vim-airline

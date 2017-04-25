@@ -29,7 +29,6 @@ no <leader>j <c-w>j
 no <leader>k <c-w>k
 no <leader>l <c-w>l
 
-set bg=light
 if has("gui_running")
   set go-=T
   set go-=r
@@ -38,6 +37,7 @@ if has("gui_running")
   set showtabline=1
   set lines=45
   set columns=85
+  set bg=light
   if has("win32")
     set guifont=Consolas:h11
   elseif has("macunix")
@@ -45,7 +45,8 @@ if has("gui_running")
   endif
   colorscheme solarized
 else
-  colorscheme default
+  set bg=dark
+  colorscheme gruvbox
 endif
 
 if has("win32")
@@ -54,11 +55,18 @@ else
   au BufWritePost .vimrc source ~/.vimrc
 endif
 
+if &term =~ '256color'
+  " Disable Background Color Erase (BCE) so color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " See also http://snk.tuxfamily.org/lov/vim-256color-bce.html
+  set t_ut=
+endif
+
 au BufNewFile,BufRead * setlocal formatoptions-=cro
 au BufNewFile,BufRead *.cl setlocal ft=opencl
 au BufNewFile,BufRead *.md setlocal ft=markdown
 au FileType c setlocal ts=4 sw=4 et fo+=tcqlron com-=:// com+=f:// cino=:0,l1,t0,g0
-au FileType cpp setlocal ts=2 sw=2 et matchpairs+=<:> cinoptions=g1
+au FileType cpp setlocal ts=4 sw=4 et matchpairs+=<:> cinoptions=g1
 au FileType lua setlocal ts=2 sw=2 et
 au FileType ruby setlocal sw=2 ts=2
 au FileType vim setlocal sw=2 ts=2

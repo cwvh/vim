@@ -1,6 +1,7 @@
 ## Install
 
 ```
-git clone https://github.com/cwvh/vim.git ~/.vim
-( cd ~/.vim/ && ./bootstrap.sh )
+git clone https://github.com/cwvh/vim.git ~/.config/nvim
+ln -s ~/.config/nvim ~/.vim
+nvim +PlugInstall
 ```

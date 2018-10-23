@@ -33,7 +33,7 @@ let g:ale_rust_cargo_use_check = 1
 set shm=atI
 set ts=4 sw=4 et
 set nobackup noswapfile
-set nu rnu
+set nu
 "set mouse=a
 set t_BE=   " needed to prevent bracketed paste in terminal on vim exit
 
@@ -58,6 +58,8 @@ no <leader>l <c-w>l
 noremap <leader><leader> <c-^>
 noremap <c-j> :cnext<cr>
 noremap <c-k> :cprev<cr>
+" toggle between all number modes (none, nu, rnu, and rnu+nu)
+nmap <silent> <F3> :exe 'set nu!' &nu ? 'rnu!' : ''<CR>
 
 " Autocommands
 " Leave paste mode when leaving insert mode

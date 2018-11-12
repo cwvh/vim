@@ -1,6 +1,7 @@
 let mapleader = "\<Space>"
 
 call plug#begin('~/.vim/plugged')
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
 
 " Navigation and search

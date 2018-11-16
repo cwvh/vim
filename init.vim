@@ -35,6 +35,7 @@ set shm=atI
 set ts=4 sw=4 et
 set nobackup noswapfile
 set nu
+set nohlsearch
 "set mouse=a
 set t_BE=   " needed to prevent bracketed paste in terminal on vim exit
 

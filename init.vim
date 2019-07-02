@@ -72,6 +72,12 @@ if has('nvim')
   " New vertical
   noremap <C-x>% :vnew +terminal<CR>
   tnoremap <C-x>% <C-\><C-n>:vnew +terminal<CR>
+
+  augroup neovim_terminal
+    autocmd!
+    autocmd TermOpen * startinsert      " INSERT on terminal start
+    autocmd TermOpen * :set nonu nornu  " no line numbers in terminals
+  augroup END
 endif
 
 " Autocommands

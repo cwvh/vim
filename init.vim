@@ -98,6 +98,7 @@ au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 au FileType rust nmap <c-c><c-c> :Cargo check<CR>
 au FileType rust nmap <c-c><c-r> :Cargo run<CR>
+au FileType rust nmap <c-c><c-t> :Cargo test<CR>
 
 " Completion
 " Tab to move forward. Shift-Tab to move backwards. Don't let <Enter> turn into a '\n' in the buffer.

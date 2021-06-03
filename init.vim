@@ -8,7 +8,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Completion
-Plug 'racer-rust/vim-racer'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 
 " Language
 Plug 'rust-lang/rust.vim'
@@ -84,18 +84,19 @@ endif
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
 
+" Language stuff (common)
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rust-analyzer'],
+    \ }
+nmap <F5> <Plug>(lcn-menu)
+nmap <silent>K <Plug>(lcn-hover)
+nmap <silent>gd <Plug>(lcn-definition)
+nmap <silent>F2 <Plug>(lcn-rename)
+
 " Rust stuff
 set hidden  " don't attempt to save the buffer when doing rust/racer go-to-def
-let g:racer_experimental_completer = 1  " show complete function definition when completing
-let g:racer_insert_paren = 1
-let g:racer_cmd = "~/.cargo/bin/racer"
 let g:rustfmt_command = 'rustfmt +nightly'
 let g:rust_clip_command = 'xclip -selection clipboard'
-let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
 au FileType rust nmap <c-c><c-c> :Cargo check<CR>
 au FileType rust nmap <c-c><c-r> :Cargo run<CR>
 au FileType rust nmap <c-c><c-t> :Cargo test<CR>

@@ -18,10 +18,11 @@ set nu
 set incsearch nohlsearch
 set mouse=nic
 set t_BE=   " prevent bracketed paste in terminal on vim exit
+set ttymouse=xterm2
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_section_b="%f"
+let g:airline_section_b="%f %{airline#util#wrap(airline#extensions#branch#get_head(),20)}"
 let g:airline_section_c=''
 let g:airline_section_x=''
 let g:airline_section_y="%Y"

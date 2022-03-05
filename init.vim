@@ -18,7 +18,10 @@ set nu
 set incsearch nohlsearch
 set mouse=nic
 set t_BE=   " prevent bracketed paste in terminal on vim exit
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+set cc=80
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -38,6 +41,12 @@ no <leader>d :exe ':Rg ' . expand('<cword>')<CR>
 noremap <leader><leader> <c-^>
 noremap <c-j> :cnext<cr>
 noremap <c-k> :cprev<cr>
+" copy-paste with tmux
+no <leader>c :w !tmux load-buffer -<CR>
+no <leader>v :r !tmux save-buffer -<CR>
+" random shortcuts
+no <leader>r :RustFmtRange<CR>
+no <leader>R :RustFmt<CR>
 
 if has("gui_running")
   set go-=m
@@ -65,3 +74,4 @@ au FileType vim setlocal sw=2 ts=2
 au FileType go setlocal ts=4 sw=4 noet
 au FileType html,xml setlocal ts=2 sw=2 ts=2 et
 au FileType python setlocal nosmartindent
+au FileType rust setlocal cc=80 textwidth=80

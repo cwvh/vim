@@ -31,8 +31,12 @@ let g:airline_section_x=''
 let g:airline_section_y="%Y"
 let g:airline#extensions#fugitiveline#enabled=1
 
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
 " Navigation
-no <c-p> :Files<CR>
+no <c-t> :Files<CR>
 no <c-b> :Buffers<CR>
 no <c-h> :History<CR>
 no <c-f> :Rg<CR>
@@ -41,6 +45,10 @@ no <leader>d :exe ':Rg ' . expand('<cword>')<CR>
 noremap <leader><leader> <c-^>
 noremap <c-j> :cnext<cr>
 noremap <c-k> :cprev<cr>
+noremap <c-u> <c-u>zz
+noremap <c-d> <c-d>zz
+noremap n nzz
+noremap N Nzz
 " copy-paste with tmux
 no <leader>c :w !tmux load-buffer -<CR>
 no <leader>v :r !tmux save-buffer -<CR>

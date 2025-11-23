@@ -3,13 +3,13 @@ let mapleader = "\<Space>"
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml', { 'branch': 'main' }
+Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/Align'
 call plug#end()
 
 set ts=4 sw=4 sts=4 et
@@ -22,6 +22,7 @@ if !has('nvim')
   set ttymouse=xterm2
 endif
 set cc=80
+set autochdir
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -35,14 +36,24 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " Navigation
-no <c-t> :Files<CR>
-no <c-b> :Buffers<CR>
-no <c-h> :History<CR>
-no <c-f> :Rg<CR>
+for [key, cmd] in [
+      \ ['t', 'Files'],
+      \ ['p', 'GitFiles'],
+      \ ['b', 'Buffers'],
+      \ ['h', 'History'],
+      \ ['f', 'Rg'],
+      \ ]
+  execute printf('nnoremap <c-%s> :%s<CR>', key, cmd)
+  execute printf('nnoremap <leader>%s :%s<CR>', key, cmd)
+endfor
+
+no <leader>gb :Git blame<CR>
 no <leader>d :exe ':Rg ' . expand('<cword>')<CR>
-" toggle between buffers
-noremap <leader><leader> <c-^>
+
 noremap <c-j> :cnext<cr>
 noremap <c-k> :cprev<cr>
 noremap <c-u> <c-u>zz
@@ -83,3 +94,17 @@ au FileType go setlocal ts=4 sw=4 noet
 au FileType html,xml setlocal ts=2 sw=2 ts=2 et
 au FileType python setlocal nosmartindent
 au FileType rust setlocal cc=80 textwidth=80
+
+function! TmuxYank()
+  let buffer=system('base64 -w0', @0)
+  let buffer=substitute(buffer, "\n$", "", "")
+  let buffer='\e]52;c;'.buffer.'\x07'
+  silent exe "!echo -ne ".shellescape(buffer)." > ".system("tmux display -p '#{pane_tty}'")
+endfunction
+
+" Autoforward yank events.
+set clipboard+=unnamedplus
+augroup TmuxYankAuto
+  autocmd!
+  autocmd TextYankPost * if v:event.operator ==# 'y' | call TmuxYank() | endif
+augroup END

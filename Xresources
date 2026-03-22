@@ -1,0 +1,42 @@
+! --- Core appearance ---
+XTerm*background:  #0e0e0e
+XTerm*foreground:  #e6e6e6
+XTerm*cursorColor: #e6e6e6
+
+! --- Font (Xft) ---
+XTerm*faceName: Terminus
+XTerm*faceSize: 12
+
+! --- Rendering ---
+XTerm*antialias: true
+XTerm*hinting:   true
+XTerm*rgba:      rgb
+
+! --- Bell ---
+XTerm*visualBell:   false
+XTerm*bellIsUrgent: false
+
+! --- Selection ---
+XTerm*selectToClipboard: true
+
+! --- TERM correctness ---
+XTerm*termName: xterm-256color
+
+! --- ANSI colors ---
+XTerm*color0:  #000000
+XTerm*color1:  #cc0000
+XTerm*color2:  #4e9a06
+XTerm*color3:  #c4a000
+XTerm*color4:  #3465a4
+XTerm*color5:  #75507b
+XTerm*color6:  #06989a
+XTerm*color7:  #d3d7cf
+
+XTerm*color8:  #555753
+XTerm*color9:  #ef2929
+XTerm*color10: #8ae234
+XTerm*color11: #fce94f
+XTerm*color12: #729fcf
+XTerm*color13: #ad7fa8
+XTerm*color14: #34e2e2
+XTerm*color15: #eeeeec
